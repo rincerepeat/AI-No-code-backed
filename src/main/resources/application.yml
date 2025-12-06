@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ai-no-code-backhend
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+# springdoc-openapi
+springdoc:
+  group-configs:
+    - group: 'default'
+      packages-to-scan: org.example.ainocode.controller
+# knife4j
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
