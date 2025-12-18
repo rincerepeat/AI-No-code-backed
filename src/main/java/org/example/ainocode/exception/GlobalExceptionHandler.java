@@ -6,7 +6,6 @@ import org.example.ainocode.common.BaseResponse;
 import org.example.ainocode.common.ResultUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 @Hidden
 @RestControllerAdvice
 @Slf4j
@@ -21,6 +20,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public BaseResponse<?> runtimeExceptionHandler(RuntimeException e) {
         log.error("RuntimeException", e);
-        return ResultUtils.error(ErrorCode.SYSTEM_ERROR, "系统错误");
+        return ResultUtils.error(ErrorCode.SYSTEM_ERROR.getCode(), "系统错误");
     }
 }

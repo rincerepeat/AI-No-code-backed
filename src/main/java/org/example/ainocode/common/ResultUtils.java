@@ -1,5 +1,5 @@
 package org.example.ainocode.common;
-
+import org.example.ainocode.exception.ErrorCode;
 public class ResultUtils {
 
     /**
