@@ -1,4 +1,10 @@
 spring:
+    # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/no-ai-code
+    username: root
+    password: 1234
   application:
     name: ai-no-code-backhend
 server:
@@ -10,7 +16,7 @@ springdoc:
   group-configs:
     - group: 'default'
       packages-to-scan: org.example.ainocode.controller
-# knife4j
+# knife4j1
 knife4j:
   enable: true
   setting:
