@@ -1,4 +1,4 @@
-package org.example.ainocode.model.dto;
+package org.example.ainocode.model.dto.user;
 
 import lombok.Data;
 
