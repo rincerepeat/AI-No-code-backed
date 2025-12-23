@@ -4,7 +4,9 @@ import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
 import org.example.ainocode.model.dto.app.AppQueryRequest;
 import org.example.ainocode.model.entity.App;
+import org.example.ainocode.model.entity.User;
 import org.example.ainocode.model.vo.AppVO.AppVO;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -21,4 +23,8 @@ public interface AppService extends IService<App> {
      QueryWrapper getQueryWrapper(AppQueryRequest appQueryRequest);
 //获取应用封装列表
     List<AppVO> getAppVOList(List<App> appList);
+//通过聊天生成代码
+    Flux<String> chatToGenCode(Long appId, String message, User loginUser);
+//应用部署
+    String deployApp(Long appId, User loginUser);
 }
