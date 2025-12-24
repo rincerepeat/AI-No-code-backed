@@ -1,6 +1,8 @@
 package org.example.ainocode.ai;
 
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import org.example.ainocode.ai.model.HtmlCodeResult;
 import org.example.ainocode.ai.model.MultiFileCodeResult;
 import reactor.core.publisher.Flux;
@@ -14,7 +16,8 @@ public interface AiCodeGeneratorService {
      * @return 生成的代码结果
      */
     @SystemMessage(fromResource = "prompt/codegen-html-system-prompt.txt")
-    HtmlCodeResult generateHtmlCode(String userMessage);
+        HtmlCodeResult generateHtmlCode(String userMessage);
+
 
     /**
      * 生成多文件代码

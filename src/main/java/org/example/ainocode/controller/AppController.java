@@ -83,7 +83,7 @@ return contentFlux
         })
         .concatWith(Mono.just(
                 ServerSentEvent.<String>builder()
-                        .data("done")
+                        .event("done")
                         .data("")
                         .build()
         ));

@@ -2,6 +2,7 @@ package org.example.ainocode.service;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import org.example.ainocode.model.dto.chathistory.ChatHistoryQueryRequest;
 import org.example.ainocode.model.entity.ChatHistory;
 import org.example.ainocode.model.entity.User;
@@ -56,4 +57,14 @@ public interface ChatHistoryService extends IService<ChatHistory> {
      * @return
      */
     QueryWrapper getQueryWrapper(ChatHistoryQueryRequest chatHistoryQueryRequest);
+
+    /**
+     * 加载指定应用的对话消息到内存中
+     *
+     * @param appId 应用id
+     * @param chatMemory 对话内存
+     * @param maxCount 最大数量
+     * @return 加载的条数
+     */
+    int loadChatHistoryToMemory(Long appId, MessageWindowChatMemory chatMemory, int maxCount);
 }
