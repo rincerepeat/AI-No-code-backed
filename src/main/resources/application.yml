@@ -1,5 +1,10 @@
 spring:
-#redis
+
+  #session
+  session:
+    store-type: redis
+    timeout: 2592000
+    #redis
   data:
     redis:
       host: localhost
@@ -20,6 +25,9 @@ server:
   port: 8123
   servlet:
     context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
 # springdoc-openapi
 springdoc:
   group-configs:
