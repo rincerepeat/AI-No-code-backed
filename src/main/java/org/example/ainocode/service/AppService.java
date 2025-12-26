@@ -2,6 +2,7 @@ package org.example.ainocode.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import org.example.ainocode.model.dto.app.AppAddRequest;
 import org.example.ainocode.model.dto.app.AppQueryRequest;
 import org.example.ainocode.model.entity.App;
 import org.example.ainocode.model.entity.User;
@@ -35,4 +36,6 @@ public interface AppService extends IService<App> {
      * @param appUrl 应用URL
      */
     public void generateAppScreenshotAsync(Long appId, String appUrl);
+
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 }
