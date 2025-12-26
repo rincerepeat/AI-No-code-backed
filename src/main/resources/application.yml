@@ -38,3 +38,9 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+# 添加 COS 对象存储配置（需要从腾讯云获取）
+cos:
+  client:
+    host: https://oss-cn-beijing.aliyuncs.com
+    region: cn-beijing
+    bucket: hsl-work
