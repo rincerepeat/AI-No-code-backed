@@ -41,6 +41,5 @@ knife4j:
 # 添加 COS 对象存储配置（需要从腾讯云获取）
 cos:
   client:
-    host: https://oss-cn-beijing.aliyuncs.com
-    region: cn-beijing
-    bucket: hsl-work
+    region: ap-shanghai
+    bucket: hsl-work-1393672660

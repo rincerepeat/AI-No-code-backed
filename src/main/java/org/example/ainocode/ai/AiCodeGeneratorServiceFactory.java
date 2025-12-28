@@ -10,7 +10,7 @@ import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.example.ainocode.ai.tools.FileWriteTool;
+import org.example.ainocode.ai.tools.*;
 import org.example.ainocode.exception.BusinessException;
 import org.example.ainocode.exception.ErrorCode;
 import org.example.ainocode.model.enums.CodeGenTypeEnum;
@@ -35,6 +35,8 @@ public class AiCodeGeneratorServiceFactory {
   private ChatHistoryService chatHistoryService;
 @Resource
  private StreamingChatModel reasoningStreamingChatModel;
+@Resource
+private ToolManager toolManager;
     /**
      * AI 服务实例缓存
      * 缓存策略：
@@ -85,11 +87,15 @@ public class AiCodeGeneratorServiceFactory {
             case VUE_PROJECT -> AiServices.builder(AiCodeGeneratorService.class)
                     .streamingChatModel(reasoningStreamingChatModel)
                     .chatMemoryProvider(memoryId -> chatMemory)
-                    .tools(new FileWriteTool())
+                    .tools(
+                            toolManager.getAllTools()
+                    )
+                    //处理工具调用幻觉
                     .hallucinatedToolNameStrategy(toolExecutionRequest -> ToolExecutionResultMessage.from(
                             toolExecutionRequest, "Error: there is no tool called " + toolExecutionRequest.name()
                     ))
                     .build();
+
             // HTML 和多文件生成使用默认模型
             case HTML, MULTI_FILE -> AiServices.builder(AiCodeGeneratorService.class)
                     .chatModel(chatModel)
