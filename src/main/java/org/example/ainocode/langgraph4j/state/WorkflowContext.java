@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bsc.langgraph4j.prebuilt.MessagesState;
+import org.example.ainocode.langgraph4j.model.ImageCollectionPlan;
 import org.example.ainocode.langgraph4j.model.ImageResource;
+import org.example.ainocode.langgraph4j.model.QualityResult;
 import org.example.ainocode.model.enums.CodeGenTypeEnum;
 
 import java.io.Serial;
@@ -46,6 +48,10 @@ public class WorkflowContext implements Serializable {
      * 图片资源列表
      */
     private List<ImageResource> imageList;
+    /**
+     * 质量检查结果
+     */
+    private QualityResult qualityResult;
 
     /**
      * 增强后的提示词
@@ -71,6 +77,19 @@ public class WorkflowContext implements Serializable {
      * 错误信息
      */
     private String errorMessage;
+    /**
+     * 图片收集计划
+     */
+    private ImageCollectionPlan imageCollectionPlan;
+
+
+    /**
+     * 并发图片收集的中间结果字段
+     */
+    private List<ImageResource> contentImages;
+    private List<ImageResource> illustrations;
+    private List<ImageResource> diagrams;
+    private List<ImageResource> logos;
 
     @Serial
     private static final long serialVersionUID = 1L;
